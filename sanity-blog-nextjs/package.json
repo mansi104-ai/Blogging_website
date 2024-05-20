@@ -9,7 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@sanity/image-url": "1",
+    "@portabletext/react": "^3.0.18",
+    "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "3",
     "next": "14.2.3",
     "next-sanity": "^9.0.20",
@@ -19,6 +20,7 @@
     "styled-components": "6"
   },
   "devDependencies": {
+    "@sanity/eslint-config-studio": "4.0.0",
     "@types/lodash": "^4.17.4",
     "@types/node": "^20",
     "@types/prop-types": "^15.7.12",
