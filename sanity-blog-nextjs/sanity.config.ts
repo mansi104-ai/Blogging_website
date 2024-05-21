@@ -3,29 +3,32 @@
  */
 
 import {visionTool} from '@sanity/vision'
-import {defineConfig, resolveSchemaTypes} from 'sanity'
-
+import { defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-// import {apiVersion, dataset, projectId} from 'sanity/env'
-import {schema} from './schema'
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET
+import {apiVersion, dataset, projectId} from './sanity/env'
+import {schema} from './sanity/schema'
+import { myTheme } from './theme'
+import StudioNavbar  from './Components/StudioNavBar'
+import Logo from './Components/Logo'
+
 export default defineConfig({
   basePath: '/studio',
-  title: "Blogging_website",
-  projectId :"qsepmvcv",
-  dataset : "production",
+  projectId,
+  dataset,
   // Add and edit the content schema in the './sanity/schema' folder
   schema,
+  studio: {
+    components:{
+      logo : Logo,
+      navbar : StudioNavbar,
+    }
+  },
   plugins: [
     structureTool(),
     // Vision is a tool that lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
-    visionTool({
-      defaultApiVersion: 'v2021-03-25',
-      defaultDataset: 'development',
-    }),
+    visionTool({defaultApiVersion: apiVersion}),
   ],
 })
